@@ -1,35 +1,36 @@
+from colorama import init
 from colorama import Fore, Back, Style
-print(Back.CYAN)
+init()
 
-while 1:
-	print('Программа калькулятор запущена')
-	print('Пожалуйста следуйте инструкциям ниже.')
-	do = input('Что нужно сделать? (+, -, *, /): ')
+while True:
+	print(Fore.GREEN)
+	print('Программа запущена.\nСледуйте инструкциям на экране.')
+	print(Fore.CYAN)
+	number_one = input('Введите первое число: ')
+	number_two = input('Введите второе число: ')
+	do = input('Введите операцию(+, -, /, *): ')
+	if number_one.isdigit() and number_two.isdigit():
+		print(Fore.MAGENTA)
+		if do == '+':
+			result = float(number_one) + float(number_two)
+			print(f'Результат: {result}')
 
-	number_one = float(input('Введите первое число: '))
-	number_two = float(input('Введите второе число: '))
-	print(Fore.WHITE)
-	print(Back.GREEN)
-
-	if do == '+':
-		result = number_one + number_two
-		print('Результат: ' + str(result))
-
-	elif do == '-':
-		result = number_one - number_two
-		print('Результат: ' + str(result))
-
-	elif do == '*':
-		result = number_one * number_two
-		print('Результат: ' + str(result))
-
-	elif do == '/':
-		result = number_one / number_two
-		print('Результат: ' + str(result))
-
+		elif do == '-':
+			result = float(number_one) - float(number_two)
+			print(f'Результат: {result}')
+		elif do == '/':
+			result = float(number_one) / float(number_two)
+			print(f'Результат: {result}')
+		elif do == '*':
+			result = float(number_one) * float(number_two)
+			print(f'Результат: {result}')
+		else:
+			print(Fore.RED)
+			print('Вы ввели неверное значение или операцию!')
 	else:
-	    print('Выбрана неверная операция')
-
-
-	a = input('Нажмите Enter для выхода')
+		try:
+			float(number_one), float(number_two)
+		except ValueError:
+			print(Fore.RED)
+			print('Вы ввели неверное значение или операцию!')
 	print('Программа завершена.')
