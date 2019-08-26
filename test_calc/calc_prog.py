@@ -9,28 +9,36 @@ while True:
 	number_one = input('Введите первое число: ')
 	number_two = input('Введите второе число: ')
 	do = input('Введите операцию(+, -, /, *): ')
-	if number_one.isdigit() and number_two.isdigit():
-		print(Fore.MAGENTA)
-		if do == '+':
-			result = float(number_one) + float(number_two)
-			print(f'Результат: {result}')
 
-		elif do == '-':
-			result = float(number_one) - float(number_two)
-			print(f'Результат: {result}')
-		elif do == '/':
-			result = float(number_one) / float(number_two)
-			print(f'Результат: {result}')
-		elif do == '*':
-			result = float(number_one) * float(number_two)
-			print(f'Результат: {result}')
-		else:
-			print(Fore.RED)
-			print('Вы ввели неверное значение или операцию!')
+	if number_one.isdigit() and number_two.isdigit():
+		try:
+			print(Fore.MAGENTA)
+			if do == '+':
+				result = float(number_one) + float(number_two)
+				print(f'Результат: {result}')
+
+			elif do == '-':
+				result = float(number_one) - float(number_two)
+				print(f'Результат: {result}')
+
+			elif do == '/':
+				result = float(number_one) / float(number_two)
+				print(f'Результат: {result}')
+
+			elif do == '*':
+				result = float(number_one) * float(number_two)
+				print(f'Результат: {result}')
+
+			else:
+				print(Fore.RED)
+				print('Вы ввели неверное значение или операцию!')
+
+		except ZeroDivisionError:
+			print(Fore.RED + 'Эй, на 0 делить нельзя!')
 	else:
 		try:
 			float(number_one), float(number_two)
 		except ValueError:
 			print(Fore.RED)
 			print('Вы ввели неверное значение или операцию!')
-	print('Программа завершена.')
+	print(Fore.GREEN + 'Программа завершена.')
