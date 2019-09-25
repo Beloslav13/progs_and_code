@@ -1,7 +1,7 @@
 import simple_draw as sd
 
 # Общая функция фигур
-def figure(point, angle, length, angle_degree_change):
+def draw_figure(point, angle, length, angle_degree_change):
     start_point = point
     # Передаем side кол-во сторон, которое будет отрисовываться 
     side = 360 / angle_degree_change
@@ -11,42 +11,39 @@ def figure(point, angle, length, angle_degree_change):
         v1.draw()
         start_point = v1.end_point
         angle += angle_degree_change
-    sd.line(start_point=v1.end_point, end_point=point)
+    sd.line(start_point=start_point, end_point=point)
 
 
 # Треугольник
-def triangle(point, angle=0, length=200):
-    figure(point=point, angle=20, length=100, angle_degree_change=120)
-
-
-point = sd.get_point(100, 100)
-triangle(point=point, angle=20, length=100)
+def draw_triangle(point, angle=0, length=200):
+    draw_figure(point=point, angle=20, length=100, angle_degree_change=120)
 
 
 # квадрат
-def square(point, angle=0, length=200):
-    figure(point=point, angle=20, length=100, angle_degree_change=90)
-
-
-point = sd.get_point(450, 100)
-square(point=point, angle=20, length=100)
+def draw_square(point, angle=0, length=200):
+    draw_figure(point=point, angle=20, length=100, angle_degree_change=90)
 
 
 # пятиугольник
-def pentagon(point, angle=0, length=200):
-    figure(point=point, angle=20, length=100, angle_degree_change=72)
-
-
-point = sd.get_point(100, 350)
-pentagon(point=point, angle=20, length=100)
+def draw_pentagon(point, angle=0, length=200):
+    draw_figure(point=point, angle=20, length=100, angle_degree_change=72)
 
 
 # шестиугольник
-def hexagon(point, angle=0, length=200):
-    figure(point=point, angle=20, length=100, angle_degree_change=60)
+def draw_hexagon(point, angle=0, length=200):
+    draw_figure(point=point, angle=20, length=100, angle_degree_change=60)
 
+
+point = sd.get_point(100, 100)
+draw_triangle(point=point, angle=20, length=100)
+
+point = sd.get_point(450, 100)
+draw_square(point=point, angle=20, length=100)
+
+point = sd.get_point(100, 350)
+draw_pentagon(point=point, angle=20, length=100)
 
 point = sd.get_point(400, 350)
-hexagon(point=point, angle=20, length=100)
+draw_hexagon(point=point, angle=20, length=100)
 
 sd.pause()
