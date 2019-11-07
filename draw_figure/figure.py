@@ -1,5 +1,6 @@
 import simple_draw as sd
 
+
 # Общая функция фигур
 def draw_figure(point, angle, length, angle_degree_change):
     start_point = point
