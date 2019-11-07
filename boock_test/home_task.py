@@ -1,3 +1,5 @@
+# Задания из книги "Изучаем Python" Эрик Мэтиз.
+
 from termcolor import cprint
 
 
