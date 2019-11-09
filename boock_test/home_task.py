@@ -27,28 +27,6 @@ class Restaurant:
         return self.number_served
 
 
-restaurant = Restaurant(name='ZVA', type='burgers')
-restaurant.describe_restaurant()
-restaurant.open_restaurant()
-
-restaurant_KFC = Restaurant(name='KFC', type='burgers')
-restaurant_mcdonalds = Restaurant(name='Mcdonalds', type='burgers')
-restaurant_laterassa = Restaurant(name='Laterasa', type='pizza')
-
-restaurant_KFC.describe_restaurant()
-restaurant_mcdonalds.describe_restaurant()
-restaurant_laterassa.describe_restaurant()
-
-# 9-4
-restaurant_94 = Restaurant(name='new', type='bgrs')
-print(restaurant_94.number_served)
-restaurant_94.number_served = 10
-print(restaurant_94.number_served)
-print(restaurant_94.set_number_served(number=23))
-print(restaurant_94.number_served)
-print(restaurant_94.increment_number_served(number=100))
-
-
 # 9-3, 9-5
 class User:
 
@@ -77,18 +55,14 @@ class User:
         return self.login_attempts
 
 
+restaurant = Restaurant(name='ZVA', type='burgers')
+restaurant_KFC = Restaurant(name='KFC', type='burgers')
+restaurant_mcdonalds = Restaurant(name='Mcdonalds', type='burgers')
+restaurant_laterassa = Restaurant(name='Laterasa', type='pizza')
+restaurant_94 = Restaurant(name='new', type='bgrs')
+
 vlad = User(name='Vlad', last_name='ZVA', old=23, city='Belgorod')
 nadya = User(name='Nadya', last_name='Belya', old=22, city='Belgorod')
 
 # 9-5
 new_user = User(name='User', last_name='Test', old=20, city='BGD')
-new_user.increment_login_attempts()
-new_user.increment_login_attempts()
-print(new_user.login_attempts)
-new_user.reset_login_attempt()
-print(new_user.login_attempts)
-
-vlad.greet_user()
-vlad.describe_user()
-nadya.greet_user()
-nadya.describe_user()
