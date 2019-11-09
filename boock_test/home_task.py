@@ -60,6 +60,15 @@ class User:
         return self.login_attempts
 
 
+class IceCreamStand(Restaurant):
+    def __init__(self, name, type):
+        super().__init__(name, type)
+        self.flavors = None
+
+    def print_flavors(self):
+        cprint(self.flavors, color='cyan')
+
+
 restaurant = Restaurant(name='ZVA', type='burgers')
 restaurant_KFC = Restaurant(name='KFC', type='burgers')
 restaurant_mcdonalds = Restaurant(name='Mcdonalds', type='burgers')
@@ -68,29 +77,19 @@ restaurant_94 = Restaurant(name='new', type='bgrs')
 
 vlad = User(name='Vlad', last_name='ZVA', old=23, city='Belgorod')
 nadya = User(name='Nadya', last_name='Belya', old=22, city='Belgorod')
-
 # 9-5
 new_user = User(name='User', last_name='Test', old=20, city='BGD')
 
-
-class IceCreamStand(Restaurant):
-    def __init__(self, name, type):
-        super().__init__(name, type)
-        self.flavors = None
-
-    def print_flavors(self):
-        print(self.flavors)
-
-
-a = ['Vlad', '2', 'Zva']
-
-ice_cream = IceCreamStand(name='Ice', type='Cream')
+# Var class IceCream
+my_test_list = ['Vlad', 2, 'Zva', ]
+ice_cream = IceCreamStand(name='IceCream', type='Cafe')
 ice_cream.describe_restaurant()
-
 template = ' '
+result_test_list = []
 
-for _ in a:
-    b = template.join(a)
-    ice_cream.flavors = b
+for elem in my_test_list:
+    result_elem = str(elem)
+    result_test_list.append(result_elem)
+    append_elem = template.join(result_test_list)
+    ice_cream.flavors = append_elem
 ice_cream.print_flavors()
-
