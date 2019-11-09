@@ -34,7 +34,7 @@ class Restaurant:
 class User:
 
     def __init__(self, name, last_name, old, city):
-        self.first_name = name
+        self.name = name
         self.last_name = last_name
         self.old = old
         self.city = city
@@ -42,11 +42,11 @@ class User:
 
     def describe_user(self):
         cprint('Имя - {}, второе имя - {}, возраст - {}, город - {}'.format(
-            self.first_name, self.last_name, self.old, self.city
+            self.name, self.last_name, self.old, self.city
         ), color='cyan')
 
     def greet_user(self):
-        cprint('Привет, {}!'.format(self.first_name), color='grey')
+        cprint('Привет, {}!'.format(self.name), color='grey')
 
     # 9-5
     def increment_login_attempts(self):
@@ -61,12 +61,27 @@ class User:
 
 
 class IceCreamStand(Restaurant):
+
     def __init__(self, name, type):
         super().__init__(name, type)
         self.flavors = None
 
     def print_flavors(self):
         cprint(self.flavors, color='cyan')
+
+
+class Admin(User):
+
+    def __init__(self, name, last_name, old, city=None):
+        super().__init__(name, last_name, old, city)
+        self.privileges = [allowed_to_add_messages, allowed_to_del_users, allowed_to_ban_users]
+
+    def show_privileges(self, num_privileges=None):
+        if num_privileges is not None:
+            self.privileges = self.privileges[num_privileges]
+            cprint(self.privileges, color='magenta')
+        else:
+            cprint(self.privileges, color='cyan')
 
 
 restaurant = Restaurant(name='ZVA', type='burgers')
@@ -93,3 +108,11 @@ for elem in my_test_list:
     append_elem = template.join(result_test_list)
     ice_cream.flavors = append_elem
 ice_cream.print_flavors()
+
+# Var class Admin
+allowed_to_add_messages = 'разрешено добавлять сообщения'
+allowed_to_del_users = 'разрешено удалять пользователей'
+allowed_to_ban_users = 'разрешено банить пользователей'
+
+admin = Admin(name='Vladislav', last_name='Petrov', old=23)
+admin.show_privileges(num_privileges=1)
