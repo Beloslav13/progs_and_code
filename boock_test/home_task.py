@@ -12,6 +12,7 @@ class Restaurant:
         self.number_served = 0
 
     def describe_restaurant(self):
+        """ Выводит название и тип ресторана. """
         cprint('Ресторан - {}, тип - {}'.format(self.restaurant_name, self.cuisine_type), color='magenta')
 
     def open_restaurant(self):
@@ -19,10 +20,12 @@ class Restaurant:
 
     # 9-4
     def set_number_served(self, number):
+        """ Устанавливает кол-во обслуживания людей. """
         self.number_served = number
         return self.number_served
 
     def increment_number_served(self, number):
+        """ Инкрементирует кол-во обслуживания людей. """
         self.number_served += number
         return self.number_served
 
@@ -47,10 +50,12 @@ class User:
 
     # 9-5
     def increment_login_attempts(self):
+        """ Увеличивает кол-во попыток входа. """
         self.login_attempts += 1
         return self.login_attempts
 
     def reset_login_attempt(self):
+        """ Сбрасывает кол-во попыток входа. """
         self.login_attempts = 0
         return self.login_attempts
 
@@ -66,3 +71,26 @@ nadya = User(name='Nadya', last_name='Belya', old=22, city='Belgorod')
 
 # 9-5
 new_user = User(name='User', last_name='Test', old=20, city='BGD')
+
+
+class IceCreamStand(Restaurant):
+    def __init__(self, name, type):
+        super().__init__(name, type)
+        self.flavors = None
+
+    def print_flavors(self):
+        print(self.flavors)
+
+
+a = ['Vlad', '2', 'Zva']
+
+ice_cream = IceCreamStand(name='Ice', type='Cream')
+ice_cream.describe_restaurant()
+
+template = ' '
+
+for _ in a:
+    b = template.join(a)
+    ice_cream.flavors = b
+ice_cream.print_flavors()
+
