@@ -74,6 +74,12 @@ class Admin(User):
 
     def __init__(self, name, last_name, old, city=None):
         super().__init__(name, last_name, old, city)
+
+
+class AdminPrivileges:
+
+    def __init__(self, name):
+        self.name = name
         self.privileges = [allowed_to_add_messages, allowed_to_del_users, allowed_to_ban_users]
 
     def show_privileges(self, num_privileges=None):
@@ -115,4 +121,5 @@ allowed_to_del_users = 'разрешено удалять пользовател
 allowed_to_ban_users = 'разрешено банить пользователей'
 
 admin = Admin(name='Vladislav', last_name='Petrov', old=23)
-admin.show_privileges(num_privileges=1)
+privileges = AdminPrivileges(name=admin)
+privileges.show_privileges(num_privileges=1)
