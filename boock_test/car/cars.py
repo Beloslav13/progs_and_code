@@ -66,6 +66,15 @@ class Battery:
         message += " miles on a full charge."
         print(message)
 
+    def update_battery(self):
+        if self.battery_size != 85:
+            self.battery_size = 85
+
 
 my_car = Car(make='BMW', model='7', year=1990)
 tesla = ElectricCar(make='Ford', model='Kuga', year=2019)
+
+new_tesla = ElectricCar(make='Ford2', model='Kuga2', year=2019)
+new_tesla.battery.get_range()
+new_tesla.battery.update_battery()
+new_tesla.battery.get_range()
