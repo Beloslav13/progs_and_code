@@ -20,3 +20,17 @@ def find_it(number):
 
 
 # print(find_it([20, 1, -1, 2, -2, 3, 3, 5, 5, 1, 2, 4, 20, 4, -1, -2, 5]))
+
+
+def getCount(input_str):
+    """Возвращает кол-во гласных(пример)"""
+    num_vowels = 0
+    chars = 'aeiou'
+    for index, char_input in enumerate(input_str):
+        for char in chars:
+            if char == char_input:
+                num_vowels += 1
+    return num_vowels
+
+
+# print(getCount("abracadabra"))
