@@ -34,3 +34,13 @@ def getCount(input_str):
 
 
 # print(getCount("abracadabra"))
+
+def my_numbers(chars):
+    template = []
+    for index, char in enumerate(chars):
+        index = index + 1
+        template.append(str(index) + ': ' + char)
+    return template
+
+
+print(my_numbers(["a", "b", "c"]))
