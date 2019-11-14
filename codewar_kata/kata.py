@@ -36,6 +36,7 @@ def getCount(input_str):
 # print(getCount("abracadabra"))
 
 def my_numbers(chars):
+    """Возвращает номера строк"""
     template = []
     for index, char in enumerate(chars):
         index = index + 1
@@ -43,4 +44,16 @@ def my_numbers(chars):
     return template
 
 
-print(my_numbers(["a", "b", "c"]))
+# print(my_numbers(["a", "b", "c"]))
+
+def find_short(s):
+    """Возвращает длину самого короткого слова в строке."""
+    template = []
+    words = s.split()
+    for word in words:
+        word_len = len(word)
+        template.append(word_len)
+    return min(template)
+
+
+print(find_short("bitcoin take over the world maybe who knows perhaps"))
