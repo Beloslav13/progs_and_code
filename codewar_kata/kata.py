@@ -58,18 +58,13 @@ def find_short(s):
 
 # print(find_short("bitcoin take over the world maybe who knows perhaps"))
 
+
 def accum(string):
-
-    count = 1
-    for char in string:
-        template = ' '
-        new_char = char * count
-        count += 1
-        # template.append(a)
-        a = template.join(new_char)
-        template.join(a)
-        print(template)
-        print(a)
+    """Передай строку и сам всё увидишь."""
+    value = ""
+    for i, c in enumerate(string):
+        value += c.upper() + c.lower() * i + "-"
+    return value[:-1]
 
 
-print(accum("ZpglnRxqenU"))
+# print(accum("ZpglnRxqenU"))
