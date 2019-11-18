@@ -56,4 +56,20 @@ def find_short(s):
     return min(template)
 
 
-print(find_short("bitcoin take over the world maybe who knows perhaps"))
+# print(find_short("bitcoin take over the world maybe who knows perhaps"))
+
+def accum(string):
+
+    count = 1
+    for char in string:
+        template = ' '
+        new_char = char * count
+        count += 1
+        # template.append(a)
+        a = template.join(new_char)
+        template.join(a)
+        print(template)
+        print(a)
+
+
+print(accum("ZpglnRxqenU"))
