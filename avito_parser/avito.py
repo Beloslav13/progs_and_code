@@ -1,12 +1,13 @@
 import requests
 from bs4 import BeautifulSoup as bs
 import csv
+import re
 
 headers = {'accept': '*/*',
            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                          'Chrome/78.0.3904.97 Safari/537.36'}
 
-base_url = 'https://www.avito.ru/belgorod/avtomobili/honda?&cd=1&radius=200'
+base_url = 'https://www.avito.ru/belgorod/avtomobili/audi?cd=1&radius=200'
 
 
 def avito_pars(url, headers, requests=requests):
@@ -18,10 +19,18 @@ def avito_pars(url, headers, requests=requests):
         print('Yes')
         pars = bs(requests.content, 'lxml')
         try:
-            pagination = pars.find_all('a', attrs={'class': 'pagination-page'})
-            count = int(pagination[3].text)
-            for i in range(1, count + 1):
-                url = f'https://www.avito.ru/belgorod/avtomobili/honda?p={i}&cd=1&radius=200'
+            pagination = pars.find_all('div', attrs={'class': 'pagination-pages'})
+            # Находим все ссылки пагинации
+            for pag in pagination:
+                hrefs = pag.find_all('a', attrs={'class': 'pagination-page'})
+                for href in hrefs:
+                    result_link = href['href']
+                # С помощью регулярного выражения извлекаем номер последней страницы из последней ссылки пагинации
+                relative_url = result_link
+                regex = re.compile(r'\/(.+)\/(.+)?p=(\d+)(.+)')
+                page = int(regex.findall(relative_url)[0][2])
+            for i in range(1, page + 1):
+                url = f'https://www.avito.ru/belgorod/avtomobili/audi?p={i}&cd=1&radius=200'
                 if url not in urls:
                     urls.append(url)
         except:
