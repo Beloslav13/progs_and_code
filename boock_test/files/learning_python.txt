@@ -1,0 +1,3 @@
+In Python you can make games
+In Python you can make programs for analysis
+In Python you can make programs for machine learning
