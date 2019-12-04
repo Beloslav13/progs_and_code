@@ -14,7 +14,7 @@ class FileOrder:
                 secs = os.path.getmtime(full_file_path)
                 file_time = time.gmtime(secs)
                 dates = self.optimaze_file_time(file_time=file_time)
-                self.create_dir(dates=dates)
+                self.create_dir(dates=dates, path='icons_by_year')
                 self.copy_file(dates=dates, full_file_path=full_file_path)
 
     def optimaze_file_time(self, file_time):
@@ -26,19 +26,17 @@ class FileOrder:
         dates = str(file_time[0]) + '/' + file_time_res
         return dates
 
-    def create_dir(self, dates):
+    def create_dir(self, dates, path):
         """Создать директории."""
-        path = 'icons_by_year' # Тут придумать название директории куда будут копироваться сортированные файлы.
         os.makedirs(os.path.join(path, dates), exist_ok=True)
 
     def copy_file(self, dates, full_file_path):
         """Скопировать файлы."""
-        path_copy = 'icons_by_year/' + dates # Тут поменять название на Вашу директорию, как указали выше.
-        path_copy_norm = os.path.normpath(path_copy)
+        path_copy_norm = os.path.normpath(os.path.join('icons_by_year', dates))
         shutil.copy2(full_file_path, path_copy_norm)
 
 
-path = 'icons' # Здесь Ваша директория, откуда будут сортироваться файлы.
+path = 'icons'
 path_norm = os.path.normpath(path)
 file_order = FileOrder(path=path_norm)
 file_order.walk_dir()
