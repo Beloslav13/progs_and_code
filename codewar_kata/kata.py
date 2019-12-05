@@ -68,3 +68,20 @@ def accum(string):
 
 
 # print(accum("ZpglnRxqenU"))
+
+def array_diff(a, b):
+    """Удалить все значения из списка a, которые присутствуют в b."""
+    for _ in a:
+        if b:
+            for numb_b in b:
+                if a.count(numb_b):
+                    a.remove(numb_b)
+        else:
+            return a
+    return a
+
+
+print(array_diff(a=[1, 2, 2, 4], b=[1, 2, 3]))
+print(array_diff(a=[], b=[1, 2, 3]))
+
+
