@@ -4,7 +4,7 @@ import csv
 
 def take_friends():
     """Вернуть список друзей."""
-    token = '837182c3837182c3837182c387831f94ce88371837182c3dea26888d14c55c5189a3f42'
+    token = '' #Token
     version = 5.103
     fields = 'fields'
     user_id = '53083705'
