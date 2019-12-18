@@ -103,3 +103,21 @@ def order(strs):
 # print(order(""))
 
 
+def namelist(names):
+    len_names = len(names)
+    i = 1
+    res = ''
+    for name in names:
+        for n in name.items():
+            if i == len_names - 1:
+                res += n[1] + ' & '
+            else:
+                res += '' + n[1] + ', '
+            i += 1
+    return res[:-2]
+
+
+# print(namelist([{'name': 'Bart'}, {'name': 'Lisa'}, {'name': 'Maggie'}]))
+# print(namelist([{'name': 'Bart'}, {'name': 'Lisa'}]))
+# print(namelist([{'name': 'Bart'}, {'name': 'Lisa'}, {'name': 'Maggie'}, {'name': 'Homer'}, {'name': 'Marge'}]))
+
