@@ -81,7 +81,25 @@ def array_diff(a, b):
     return a
 
 
-print(array_diff(a=[1, 2, 2, 4], b=[1, 2, 3]))
-print(array_diff(a=[], b=[1, 2, 3]))
+# print(array_diff(a=[1, 2, 2, 4], b=[1, 2, 3]))
+# print(array_diff(a=[], b=[1, 2, 3]))
+
+
+def order(strs):
+    if not strs:
+        return strs
+    strs = strs.split()
+    i = 1
+    res = ''
+    while i <= len(strs):
+        for word in strs:
+            if str(i) in word:
+                res += word + ' '
+                i += 1
+    return res[:-1]
+
+
+# print(order("is2 Thi1s T4est 3a"))
+# print(order(""))
 
 
