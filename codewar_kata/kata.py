@@ -86,6 +86,7 @@ def array_diff(a, b):
 
 
 def order(strs):
+    """Расставить слова по числам."""
     if not strs:
         return strs
     strs = strs.split()
@@ -104,6 +105,7 @@ def order(strs):
 
 
 def namelist(names):
+    """Добавить & перед последним именем."""
     len_names = len(names)
     i = 1
     res = ''
@@ -121,3 +123,17 @@ def namelist(names):
 # print(namelist([{'name': 'Bart'}, {'name': 'Lisa'}]))
 # print(namelist([{'name': 'Bart'}, {'name': 'Lisa'}, {'name': 'Maggie'}, {'name': 'Homer'}, {'name': 'Marge'}]))
 
+
+def count(string):
+    """Кол-во символов в переданной строке."""
+    my_dict = {}
+    for char in string:
+        if char in my_dict:
+            my_dict[char] += 1
+        else:
+            my_dict[char] = 1
+    return my_dict
+
+
+print(count('aba'))
+print(count(''))
