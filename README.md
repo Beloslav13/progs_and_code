@@ -1,2 +1,3 @@
 # progs_and_code
-Small programs and code
+  <h1 style="text-align: center;"> Приветствую в моём проекте! </h1>
+<p>Тут Вы найдете мои небольшие скрипты и программы.</p>
