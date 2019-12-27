@@ -3,10 +3,10 @@ import vk_api.bot_longpoll
 import random
 import pyowm
 from _token import token, api_key
-from data import words_weather, create_list_city
+from data import words_weather, create_list_city, group_id
 
-group_id = 190202400
 list_city = create_list_city()
+
 
 class Bot:
     """Чат-бот группы Вконтакте."""
