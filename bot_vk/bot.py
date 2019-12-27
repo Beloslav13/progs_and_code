@@ -1,7 +1,9 @@
 import vk_api
 import vk_api.bot_longpoll
 import random
-from _token import token
+import pyowm
+from _token import token, api_key
+from data import words_weather
 
 group_id = 190202400
 
@@ -29,7 +31,15 @@ class Bot:
         """Обработка событий."""
         if event.type == vk_api.bot_longpoll.VkBotEventType.MESSAGE_NEW:
             first_name_user, photo_user = self.info_user(event=event)
-            self.reply_user(event=event, first_name_user=first_name_user, photo_user=photo_user)
+
+            if event.message.text.lower() == 'белгород':
+                self.get_weather(city=event.message.text, event=event)
+
+            elif event.message.text.lower() in words_weather:
+                self.api.messages.send(message='Какой город интересует?', random_id=random.randint(0, 2 ** 20),
+                                       peer_id=event.message.peer_id)
+            else:
+                self.reply_user(event=event, first_name_user=first_name_user, photo_user=photo_user)
 
         elif event.type == vk_api.bot_longpoll.VkBotEventType.MESSAGE_REPLY:
             self.event_message_reply(event=event)
@@ -42,7 +52,8 @@ class Bot:
 
     def reply_user(self, event, first_name_user, photo_user):
         """Ответить пользователю"""
-        message = f'Привет, {first_name_user}! Я умею пока что только здороваться и присылать фотку...'
+        message = f'Привет, {first_name_user}! Мой разработчик научил меня только узнавать погоду по команде ' \
+                  f'"погода", "узнать погоду" и присылать фотку... '
         self.event_new_message(event=event)
         self.api.messages.send(message=message,
                                random_id=random.randint(0, 2 ** 20),
@@ -67,7 +78,30 @@ class Bot:
         print(f'Получено новое сообщение от: id{event.message.from_id}')
         print(f'Текст сообщения:\n{event.message.text}')
 
+    def get_weather(self, city, event):
+        city, message = weather.run_metcast(city=city)
+        self.api.messages.send(message=message, random_id=random.randint(0, 2 ** 20),
+                               peer_id=event.message.peer_id)
+
+
+class Weather:
+    """Класс прогноза погоды."""
+
+    def __init__(self, api_key):
+        self.api_key = api_key
+
+    def run_metcast(self, city):
+        """Запустить прогноз погоды."""
+        owm = pyowm.OWM(API_key=self.api_key, subscription_type='free', language='ru')
+        observation = owm.weather_at_place(city)
+        w = observation.get_weather()
+        temp = w.get_temperature('celsius')['temp']
+        message = "В городе " + city + " сейчас " + w.get_detailed_status() + '\nТемпература в районе: ' + str(
+            temp) + '°C'
+        return city, message
+
 
 if __name__ == '__main__':
     bot = Bot(group_id=group_id, token=token)
+    weather = Weather(api_key=api_key)
     bot.run()
