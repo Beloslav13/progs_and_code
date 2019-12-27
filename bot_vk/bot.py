@@ -3,10 +3,10 @@ import vk_api.bot_longpoll
 import random
 import pyowm
 from _token import token, api_key
-from data import words_weather
+from data import words_weather, create_list_city
 
 group_id = 190202400
-
+list_city = create_list_city()
 
 class Bot:
     """Чат-бот группы Вконтакте."""
@@ -32,7 +32,7 @@ class Bot:
         if event.type == vk_api.bot_longpoll.VkBotEventType.MESSAGE_NEW:
             first_name_user, photo_user = self.info_user(event=event)
 
-            if event.message.text.lower() == 'белгород':
+            if event.message.text.lower() in list_city:
                 self.get_weather(city=event.message.text, event=event)
 
             elif event.message.text.lower() in words_weather:
