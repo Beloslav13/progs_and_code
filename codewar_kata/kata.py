@@ -135,5 +135,20 @@ def count(string):
     return my_dict
 
 
-print(count('aba'))
-print(count(''))
+# print(count('aba'))
+# # print(count(''))
+
+
+def remove_smallest(numb):
+    """Удалить наименьшее число без изменения входных данных"""
+    if numb:
+        numb_copy = numb.copy()
+        min_numb = min(numb_copy)
+        numb_copy.remove(min_numb)
+        return numb_copy
+    return numb
+
+
+# remove_smallest([1,2,3,4,5]) = [2,3,4,5]
+# print(remove_smallest([5, 3, 2, 1, 4]))
+# print(remove_smallest([]))
