@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Django</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/blog_css.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+
+</header>
+<section class="title_section">
+    <div class="bg_title">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    {% block title%}
+                    {% endblock%}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="main_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+               {% block content %}
+                {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

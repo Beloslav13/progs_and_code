@@ -1,0 +1,36 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    padding: 0;
+    margin: 0;
+    letter-spacing: 0.02em;
+    overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+div, p, form, input, a, span, button {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+.title_section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.bg_title {
+    background: green;
+}
+
+.title {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-weight: 700;
+}
+
+.title a {
+    color: #FFF;
+}
