@@ -15,14 +15,13 @@ div, p, form, input, a, span, button {
     margin: 0;
 }
 
-
-.title_section {
-    padding-top: 30px;
-    padding-bottom: 30px;
+.header {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .bg_title {
-    background: green;
+    background: #0c212f;
 }
 
 .title {
