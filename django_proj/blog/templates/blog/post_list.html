@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Post List</title>
+    <title>Blog Django</title>
 </head>
 <body>
-<h1>Post List</h1>
+
+<h1>
+    <a href="/">Blog Django</a>
+</h1>
+
+{% for post in posts %}
+    <span>Дата публикации: {{ post.published_date }}</span>
+    <h3>
+        <a href="#">{{ post.title }}</a>
+    </h3>
+    <p>{{ post.text|linebreaksbr}}</p>
+    <br>
+{% endfor %}
+
 </body>
 </html>
