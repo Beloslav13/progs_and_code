@@ -152,3 +152,27 @@ def remove_smallest(numb):
 # remove_smallest([1,2,3,4,5]) = [2,3,4,5]
 # print(remove_smallest([5, 3, 2, 1, 4]))
 # print(remove_smallest([]))
+
+def digitize(n):
+    """Convert number to reversed array of digits"""
+    res = list(str(n))
+    res.reverse()
+    return list(map(int, res))
+
+
+def find_it_two(seq):
+    """Find the odd int"""
+    return set([char for char in seq if seq.count(char) % 2 != 0]).pop()
+
+
+def unique_in_order(iterable):
+    """Unique In Order"""
+    char = []
+    i = 0
+    for ch in iterable:
+        if i < 1:
+            char.append(ch)
+        elif ch != iterable[i - 1]:
+            char.append(ch)
+        i += 1
+    return char
