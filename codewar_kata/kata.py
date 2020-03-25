@@ -176,3 +176,17 @@ def unique_in_order(iterable):
             char.append(ch)
         i += 1
     return char
+
+
+def sort_array(my_list):
+    """Sorting odd numbers"""
+    odds = sorted((x for x in my_list if x % 2 != 0), reverse=True)
+    return [x if x % 2 == 0 else odds.pop() for x in my_list]
+
+
+def digital_root(n):
+    """Sum of Digits / Digital Root"""
+    if n < 10:
+        return n
+    new = sum([int(numb) for numb in str(n)])
+    return digital_root(n=new)
