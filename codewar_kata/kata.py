@@ -190,3 +190,14 @@ def digital_root(n):
         return n
     new = sum([int(numb) for numb in str(n)])
     return digital_root(n=new)
+
+
+def find_outlier(integers):
+    """Find The Parity Outlier"""
+    add = [numb for numb in integers if not numb % 2]
+    for numb in integers:
+        if len(add) == 1:
+            return add[0]
+        else:
+            if numb % 2:
+                return numb
