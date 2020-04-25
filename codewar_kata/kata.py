@@ -201,3 +201,28 @@ def find_outlier(integers):
         else:
             if numb % 2:
                 return numb
+
+
+def order_weight(strng):
+    """
+    Sorting numbers by their weight.
+
+    Example:
+        strng = '103 123 4444 99 2000'
+        weight = 103 -> 4 (1 + 0 + 3), 123 -> 6 (1 + 2 + 3)
+        return = '2000 103 123 4444 99'
+    """
+    list_numb_split = [numb for numb in strng.split()]
+    list_numb_tuple = []
+    result = ''
+    for numb in list_numb_split:
+        res_sum = sum(map(int, list(numb)))
+        tup = (numb, res_sum)
+        list_numb_tuple.append(tup)
+    re = sorted(list_numb_tuple, key=lambda item: (item[1], item[0]))
+    for r in re:
+        result += r[0] + ' '
+    return result[:-1]
+
+
+print(order_weight(strng='103 123 4444 99 2000'))
