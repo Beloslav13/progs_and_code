@@ -256,3 +256,24 @@ def anagrams(word, words):
         if count_char_word[key] == count_char:
             result.append(key)
     return result
+
+
+def create_phone_number(n):
+    """
+    :param n: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+    :return: "(123) 456-7890"
+    """
+    res = '('
+    i = 1
+
+    for numb in n:
+        if i == 4:
+            res += ') '
+        if i == 7:
+            res += '-'
+        res += str(numb)
+        i += 1
+    return res
+
+
+# print(create_phone_number([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]))
