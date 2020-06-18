@@ -225,4 +225,34 @@ def order_weight(strng):
     return result[:-1]
 
 
-print(order_weight(strng='103 123 4444 99 2000'))
+# print(order_weight(strng='103 123 4444 99 2000'))
+
+
+def anagrams(word, words):
+    """
+    :param word: 'abba'
+    :param words: ['aabb', 'abcd', 'bbaa', 'dada']
+    :return: ['aabb', 'bbaa']
+    """
+    count_char = {}
+    count_char_word = {}
+    result = []
+    for char in word:
+        if char in count_char:
+            count_char[char] += 1
+        else:
+            count_char[char] = 1
+
+    for key, value in count_char.items():
+        for w in words:
+            if len(word) != len(w):
+                continue
+            if w in count_char_word:
+                count_char_word[w].update({key: w.count(key)})
+            else:
+                count_char_word[w] = {key: w.count(key)}
+
+    for key, value in count_char_word.items():
+        if count_char_word[key] == count_char:
+            result.append(key)
+    return result
